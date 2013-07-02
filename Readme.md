@@ -11,32 +11,29 @@ according to your preferences.
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
-## 2 Spaces for indention
+## 4 Spaces for indention
 
-Use 2 spaces for indenting your code and swear an oath to never mix tabs and
-spaces - a special kind of hell is awaiting you otherwise.
+Whole project team should use the same settings for indention. 4 spaces chosen regarding
+fact that we're already have an agreement to use 4 spaces in our project. 
+It is recommended to setup your editor to display \t symbols in order to keep code clean.
 
 ## No trailing whitespace
 
-Just like you brush your teeth after every meal, you clean up any trailing
-whitespace in your JS files before committing. Otherwise the rotten smell of
-careless neglect will eventually drive away contributors and/or co-workers.
+Leaving trailing whitespaces has the feeling of a dirty careless code and pretty easy to 
+avoid. It is strong recomendation to set-up your editor to display trailing whitespaces and
+always remove them when you work with code.
 
 ## Use Semicolons
 
-According to [scientific research][hnsemicolons], the usage of semicolons is
-a core values of our community. Consider the points of [the opposition][], but
-be a traditionalist when it comes to abusing error correction mechanisms for
-cheap syntactic pleasures.
-
-[the opposition]: http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
-[hnsemicolons]: http://news.ycombinator.com/item?id=1547647
+Since javascrtipt doesn't treat line breaks as a statement termination and putting semicolons
+in the runtime automatically it is a good idea to help parser does not make a mistake. And avoid
+weird hard to debug problems.
 
 ## 80 characters per line
 
-Limit your lines to 80 characters. Yes, screens have gotten much bigger over the
-last few years, but your brain has not. Use the additional room for split screen,
-your editor supports that, right?
+Keep your code in the limit of 80 characters. This makes code easier to read and understand.
+Also think about split screen. This is a soft recommendation but please set-up your editor to 
+display virtual line at the 80th character and avoid crossing it.
 
 ## Use single quotes
 
