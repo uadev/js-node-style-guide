@@ -81,26 +81,13 @@ lines. Ignore [Crockford][crockfordconvention] on this, and put those
 declarations wherever they make sense.
 
 *Right:*
-
-```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
-
-var object = {};
-while (items.length) {
-  var key = keys.pop();
-  object[key] = values.pop();
-}
-```
-
-*Wrong:*
-
 ```js
 var keys = ['foo', 'bar'],
     values = [23, 42],
     object = {},
     key;
 
+var object = {};
 while (items.length) {
   key = keys.pop();
   object[key] = values.pop();
@@ -125,6 +112,27 @@ var adminUser = db.query('SELECT * FROM users ...');
 
 ```js
 var admin_user = db.query('SELECT * FROM users ...');
+```
+
+*Wrong:*
+
+```js
+this.active = function() {
+    return this._active;
+}
+```
+*Wrong:*
+
+```js
+this.isActive = function() {
+    return this._active;
+}
+```
+*Right:*
+```js
+this.getIsActive = function() {
+    return this._active === true;
+}
 ```
 
 ## Use UpperCamelCase for class names
@@ -220,7 +228,7 @@ if (a === '') {
 *Wrong:*
 
 ```js
-var a = 0;
+var a = 0;
 if (a == '') {
   console.log('losing');
 }
@@ -248,8 +256,9 @@ var foo = (a === b) ? 1 : 2;
 
 ## Do not extend built-in prototypes
 
-Do not extend the prototype of native JavaScript objects. Your future self will
-be forever grateful.
+Extending the prototype of native JavaScript objects is evil, hovewer [sometimes][es5shim] it is the only way
+to provide IE support for less. 
+Do not extend the prototype of native JavaScript objects in all other cases.
 
 *Right:*
 
@@ -273,6 +282,8 @@ if (a.empty()) {
 }
 ```
 
+[es5shim]:https://github.com/kriskowal/es5-shim
+
 ## Use descriptive conditions
 
 Any non-trivial conditions should be assigned to a descriptive variable:
@@ -280,7 +291,7 @@ Any non-trivial conditions should be assigned to a descriptive variable:
 *Right:*
 
 ```js
-var isAuthorized = (user.isAdmin() || user.isModerator());
+var isAuthorized = (user.getIsAdmin() || user.getIsModerator());
 if (isAuthorized) {
   console.log('winning');
 }
@@ -289,7 +300,7 @@ if (isAuthorized) {
 *Wrong:*
 
 ```js
-if (user.isAdmin() || user.isModerator()) {
+if (user.getIsAdmin() || user.getIsModerator()) {
   console.log('losing');
 }
 ```
