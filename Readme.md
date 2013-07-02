@@ -448,6 +448,24 @@ if (isSessionValid) {
   // ...
 }
 ```
+Multiline comments are wrong also. Comment each line separately.
+
+*Wrong:* 
+```js
+/* //Check if the session is valid
+var isSessionValid = (session.expires < Date.now());
+if (isSessionValid) {
+  // ...
+}*/
+```
+*Right:* 
+```js
+//// Check if the session is valid
+//var isSessionValid = (session.expires < Date.now());
+//if (isSessionValid) {
+//  // ...
+//}*/
+```
 
 ## Object.freeze, Object.preventExtensions, Object.seal, with, eval
 
