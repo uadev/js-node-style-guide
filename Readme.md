@@ -1,15 +1,4 @@
-# Node.js Style Guide
-
-This is a guide for writing consistent and aesthetically pleasing node.js code.
-It is inspired by what is popular within the community, and flavored with some
-personal opinions.
-
-This guide was created by [Felix Geisendörfer](http://felixge.de/) and is
-licensed under the [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
-license. You are encouraged to fork this repository and make adjustments
-according to your preferences.
-
-![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
+# Javascript / Node.js Code Style Guide
 
 ## 4 Spaces for indention
 
@@ -118,20 +107,20 @@ var admin_user = db.query('SELECT * FROM users ...');
 
 ```js
 this.active = function() {
-    return this._active;
+    return this.isActive;
 }
 ```
 *Wrong:*
 
 ```js
 this.isActive = function() {
-    return this._active;
+    return this.active;
 }
 ```
 *Right:*
 ```js
 this.getIsActive = function() {
-    return this._active === true;
+    return this.isActive === true;
 }
 ```
 
@@ -183,6 +172,35 @@ File.fullPermissions = 0777;
 ```
 
 [const]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/const
+
+## Variable names should refer to an identifier. 
+
+
+```js
+function SelectAllUsersWhereDobIsGreaterThan1980AndIsMaleOrderByNameAndAge() {}
+var instrumentAreaDockWidgetVisibilityFollowsChildPresence;
+```
+
+## Name files alllowercase. Use dashes to separate words, use dots to separate logical parts.
+*Wrong:*
+```
+myNewModule-1.0.js
+my_new_module.1-0.js
+my new module.10.js
+My-new-module.1.0.js
+```
+
+*Right:*
+```
+my-new-module-1.0.js
+```
+## Each class/module should have separate file
+
+Defining more than one class in a single file makes it harder to:
+* reason about a single class in isolation 
+* find a specific class in your file system
+* merge changes from different developers
+
 
 ## Object / Array creation
 
@@ -466,7 +484,11 @@ if (isSessionValid) {
 //  // ...
 //}*/
 ```
+## Remove your debug output before pull request
+
+As an exception It is only allowed to keep debug info for the tasks you're working on currently.
+Think about other developpers who also want to see their own (temporary) debug output.
 
 ## Object.freeze, Object.preventExtensions, Object.seal, with, eval
 
-Avoid using this.
+Avoid using them.
